@@ -11,6 +11,7 @@ bg.style.backgroundImage = "url(./img/1.jpg)"
 
 for (let i = 0; i < 5; i++) {
 	allSeries.push(`${i+1}. ${series[i].textContent.trim()}`)
+	series[i].textContent = `${i+1}. ${series[i].textContent}`
 }
 
 console.log(allSeries);
