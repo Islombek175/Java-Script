@@ -22,12 +22,12 @@ let seriesDB = {
 		for (let i = 0; i < 2; i++) {
 			let a1 = prompt(`Ohirgi ko'rgan serialingiz? ${i + 1}`, '')
 			let a2 = +prompt(`Necha baxo berasiz? ${i + 1}`, '')
-		}
-
-		if (a1 != null && a2 != null && a1 != '' && a2 != '') {
-			seriesDB.series[a1] = a2
-		} else {
-			i--
+			
+			if (a1 != null && a2 != null && a1 != '' && a2 != '') {
+				seriesDB.series[a1] = a2
+			} else {
+				i--
+			}
 		}
 	},
 	detectingLevel: function () {
@@ -73,4 +73,5 @@ let seriesDB = {
 
 const movie = Object.create(seriesDB)
 
-console.log(movie);
+console.log(movie.setSeries());
+
