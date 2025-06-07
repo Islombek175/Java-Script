@@ -1,17 +1,46 @@
-const advs = document.querySelector(".promo__adv"),
-	genre = document.querySelector(".promo__genre"),
-	bg = document.querySelector(".promo__bg");
+const advs = document.querySelector('.promo__adv'),
+	genre = document.querySelector('.promo__genre'),
+	bg = document.querySelector('.promo__bg'),
+	addForm = document.querySelector('.add'),
+	input = document.querySelector('.adding__input'),
+	seriesList = document.querySelector('.promo__interactive-list');
 
-const series = document.querySelectorAll(".promo__interactive-item")
-let allSeries = [];
+let seriesDB = [
+	"OMAR", "The Final Legacy", "ERTUGRUL", "MAGNIFICENT CENTURY", "GREAT SELJUKS: GUARDIANS..."
+];
 
 advs.remove()
-genre.textContent = "COMEDY"
-bg.style.backgroundImage = "url(./img/1.jpg)"
+genre.textContent = 'COMEDY'
+bg.style.backgroundImage = 'url(./img/1.jpg)'
 
-for (let i = 0; i < 5; i++) {
-	allSeries.push(`${i+1}. ${series[i].textContent.trim()}`)
-	series[i].textContent = `${i+1}. ${series[i].textContent}`
+addForm.addEventListener('submit', event => {
+	event.preventDefault()
+	let newSerie = input.value
+	seriesDB.push(newSerie)
+	console.log(seriesDB);
+	setList()
+})
+
+function sort()  {
+	seriesDB.sort()
 }
 
-console.log(allSeries);
+function setList() {
+	sort()
+	seriesList.innerHTML = ""
+	seriesDB.forEach((item, index) => {
+		seriesList.innerHTML += `
+		<li class="promo__interactive-item">
+			${index +1}. ${item}
+			<div class="delete"></div>`
+	})
+
+	document.querySelectorAll(".delete").forEach((trashBtn, index) => {
+		trashBtn.addEventListener("click", () => {
+			trashBtn.parentElement.remove()
+			seriesDB.splice(index, 1)
+		})
+	})
+}
+
+setList()
