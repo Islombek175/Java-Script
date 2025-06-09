@@ -6,6 +6,8 @@
 .wrapper {
 	display: flex;
 	background-color: gray;
+	height: 130px;
+	align-items: center;
 }
 button {
 	width: 20%;
@@ -16,6 +18,19 @@ button {
 	font-size: 1.5rem;
 	color: rgb(33, 33, 33);
 }
+button:active {
+	transition: 0.15s;
+	margin-bottom: 25px;
+}
 .red {
 	background-color: red;
+}
+.yellow {
+	background-color: yellow;
+}
+.green {
+	background-color: green;
+}
+.blue {
+	background-color: blue;
 }
