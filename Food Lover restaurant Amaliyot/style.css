@@ -906,3 +906,16 @@ form button {
 		opacity: 1;
 	}
 }
+.modal-fade {
+	animation-name: modal-fade;
+	animation-duration: 1s;
+}
+
+@keyframes modal-fade {
+	from {
+		transform: translateY(-100px)
+	}
+	to {
+		transform: translateY(0px);
+	}
+}

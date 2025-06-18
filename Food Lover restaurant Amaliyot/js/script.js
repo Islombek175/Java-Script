@@ -49,7 +49,7 @@ const deadline = '2025-07-10'
 function getTimerRemainig(endtime) {
 	let days, hours, minutes, seconds
 	const time = Date.parse(endtime) - Date.parse(new Date())
-	
+
 	if (time <= 0) {
 		days = 0
 		hours = 0
@@ -102,3 +102,37 @@ function setTimer(selector, endtime) {
 	}
 }
 setTimer('.timer', deadline)
+
+// Modal
+
+const modalOpenBtns = document.querySelectorAll('[data-modal]'),
+	modal = document.querySelector('.modal'),
+	modalCloseBtn = document.querySelector('[data-modal-close-btn]'),
+	modalContent = document.querySelector('.modal__content')
+
+	function closeMadal() {
+		modal.classList.add('hide')
+		modal.classList.remove('show')
+		document.body.style.overflow = ''
+		modalContent.classList.remove('modal-fade')
+	}
+modalOpenBtns.forEach(btn => {
+	btn.addEventListener('click', () => {
+		modal.classList.add('show')
+		modal.classList.remove('hide')
+		document.body.style.overflow = 'hidden'
+		modalContent.classList.add('modal-fade')
+	})
+})
+
+modal.addEventListener("click", event => {
+	if (event.target == modal) {
+		closeMadal()
+	}
+})
+
+document.addEventListener("keydown", (event) => {
+	if(event.code === "Escape" && modal.classList.contains("show")) {
+		closeMadal()
+	}
+})
