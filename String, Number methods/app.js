@@ -33,3 +33,17 @@ console.log(
 console.log("String ma'lumot turidan son qilib beradi", parseFloat(width))
 
 console.log(number)
+
+
+
+
+i = 0
+while(i <= 100) {
+	if(i % 2 == 0) {
+		i ++
+		continue
+	}
+	console.log(i);
+	i ++
+}
+
