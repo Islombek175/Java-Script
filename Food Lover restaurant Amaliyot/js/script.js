@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 
-	function showTabConten(index) {
+	function showTabContent(index) {
 		tabs[index].classList.add('tabheader__item_active')
 		tabContents[index].style.display = 'flex'
 	}
@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			tabs.forEach((tab, index) => {
 				if (target === tab) {
 					hideTabContents()
-					showTabConten(index)
+					showTabContent(index)
 				}
 			})
 		}
@@ -85,7 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			minutes = time.querySelector('#minutes'),
 			seconds = time.querySelector('#seconds')
 		updateTimer()
-		timeInterval = setInterval(updateTimer, 1000)
+		let timeInterval = setInterval(updateTimer, 1000)
 
 		function updateTimer() {
 			const time = getTimerRemainig(endtime)
@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		modalCloseBtn = document.querySelector('[data-modal-close-btn]'),
 		modalContent = document.querySelector('.modal__content')
 
-	function closeMadal() {
+	function closeModal() {
 		modal.classList.add('hide')
 		modal.classList.remove('show')
 		document.body.style.overflow = ''
@@ -126,104 +126,83 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	modal.addEventListener('click', event => {
 		if (event.target == modal || event.target == modalCloseBtn) {
-			closeMadal()
+			closeModal()
 		}
 	})
 
 	document.addEventListener('keydown', event => {
 		if (event.code === 'Escape' && modal.classList.contains('show')) {
-			closeMadal()
+			closeModal()
 		}
 	})
 
 	// Class
 
-	class OfferMenu{
-		constructor(src, alt, title, description, discount, sale, parentSelector) {
+	class OfferMenu {
+		constructor(src, alt, title, description, discount, sale, parentselector) {
 			this.src = src
 			this.alt = alt
 			this.title = title
 			this.description = description
 			this.discount = discount
 			this.sale = sale
-			this.parent = document.querySelector(parentSelector)
+			this.parent = document.querySelector(parentselector)
 			this.formatToUSD()
 		}
 
 		formatToUSD() {
-			this.discount = this.discount.toLocaleString("en-US", {style:"currency", currency:"USD"});
-			this.sale =this.sale.toLocaleString("en-US", {style:"currency", currency:"USD"});
+			this.discount = this.discount.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+			})
+			this.sale = this.sale.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+			})
 		}
 
 		render() {
-			let element = document.createElement("div")
+			const element = document.createElement('div')
 			element.innerHTML = `
-			<img src="${this.src}" alt="${this.alt}">
-      <div>
-        <h3>${this.title}</h3>
-        <p>${this.description}</p>
-        <p><del>${this.discount}</del> <span class="primary-text">${this.sale}</span></p>
-      </div>
+				<img src="${this.src}" alt="${this.alt}">
+      	<div>
+        	<h3>${this.title}</h3>
+        	<p>${this.description}</p>
+        	<p><del>${this.discount}</del> <span class="primary-text">${this.sale}</span></p>
+      	</div>
 			`
 
 			this.parent.append(element)
 		}
 	}
 
-	new OfferMenu(
-		"./img/offer1.png",
-		"Quattro Pasta",
-		"Quattro Pasta",
-		"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.",
-		55,
-		20,
-		".offers-items"
-	).render()
-
-	new OfferMenu(
-		"./img/offer2.png",
-		"Vegertarian Pasta",
-		"Vegertarian Pasta",
-		"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.",
-		60,
-		25,
-		".offers-items"
-	).render()
-
-	new OfferMenu(
-		"./img/offer3.png",
-		"Gluten-Free Pasta",
-		"Gluten-Free Pasta",
-		"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.",
-		70,
-		35,
-		".offers-items"
-	).render()
-
 	const offers = [
 		{
-			src: "./img/offer1.png",
-			alt: "Quattro Pasta",
-			title: "Quattro Pasta",
-			description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.",
+			src: './img/offer1.png',
+			alt: 'Quattro Pasta',
+			title: 'Quattro Pasta',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.',
 			discount: 55,
-			sale: 20
+			sale: 20,
 		},
 		{
-			src: "./img/offer2.png",
-			alt: "Vegertarian Pasta",
-			title: "Vegertarian Pasta",
-			description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.",
+			src: './img/offer2.png',
+			alt: 'Vegertarian Pasta',
+			title: 'Vegertarian Pasta',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.',
 			discount: 60,
-			sale: 25
+			sale: 25,
 		},
 		{
-			src: "./img/offer3.png",
-			alt: "Gluten-Free Pasta",
-			title: "Gluten-Free Pasta",
-			description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.",
+			src: './img/offer3.png',
+			alt: 'Gluten-Free Pasta',
+			title: 'Gluten-Free Pasta',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.',
 			discount: 70,
-			sale: 30
+			sale: 30,
 		},
 	]
 
@@ -235,8 +214,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			offer.description,
 			offer.discount,
 			offer.sale,
-			".offer-items"
+			'.offers-items'
 		).render()
 	})
-
 })
