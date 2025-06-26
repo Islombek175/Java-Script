@@ -35,9 +35,4 @@ sum.addEventListener("input", () => {
 			console.log(usd.value = (+sum.value / data.current.usd).toFixed(2))
 		}
 	})
-
-
-
-
-
 })
