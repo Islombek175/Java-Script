@@ -8,7 +8,7 @@ const person = {
 }
 
 const objToJson = JSON.stringify(person); // Object - JSON formatga o'girish
-const jsonToObj = JSON.parse(objToJson)
+const jsonToObj = JSON.parse(objToJson)	// JSON - formatdan JavaScript formatga o'girish
 
 const clonePerson = JSON.parse(JSON.stringify(person)) // Object ni chuqur clone lash JSON yordamida
 console.log(clonePerson);
