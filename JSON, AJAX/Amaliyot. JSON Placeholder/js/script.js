@@ -50,6 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 			.then(res => res.json())
 			.then(data => {
+				form.reset()
 				const postEl = document.createElement('div')
 				postEl.classList.add('post')
 				postEl.innerHTML = `
